@@ -1,19 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-export const Situation = props => <span>Situation: {props.appearance}</span>
+import './situation.css'
 
-export const appearances = {
-  primary: 'primaryyy',
-  stroke: 'strokeyy',
-  flat: 'flatyy'
+export const size = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+}
+export const status = {
+  aguardandoAprovacao: 'Aguardando Aprovação',
+  aprovado: 'Aprovado',
+  embalando: 'Embalando',
+  transporte: 'Transporte',
+  entrege: 'Entrege'
 }
 
+export const Situation = props =>
+  <span className={`situation situation-${props.size}`}>
+    {props.status}
+  </span>
+ 
 Situation.propTypes = {
-  // appearance: PropTypes.oneOf(['primary', 'stroke', 'flat'])
-  appearance: PropTypes.oneOf(Object.keys(appearances))
+  size: PropTypes.oneOf(Object.keys(size)),
+  status: PropTypes.oneOf(Object.keys(status))
 }
 
-Situation.appearances = appearances
+// Situation.size = size
+// Situation.status = status
 
 // export default Situation
